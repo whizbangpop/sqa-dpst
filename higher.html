@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQA Digital Paper Finder</title>
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+/>
+</head>
+<body>
+    <main class="container">
+        <nav>
+            <ul>
+              <li><strong>SQA DPST</strong></li>
+            </ul>
+            <ul>
+              <li><a href="./national-5.html">National 5</a></li>
+              <li><strong>Higher</strong></li>
+              <li><a href="./adv-higher.html">Adv Higher</a></li>
+            </ul>
+          </nav>
+
+        <input
+            type="search"
+            name="search"
+            placeholder="Search"
+            aria-label="Search"
+            onkeyup="searchHighlighter()"
+            id="input-search"
+        />
+    </main>
+    <main class="container" id="papers">
+       <ul>
+        <li><a href="#biology">Biology</a>
+            <ul>
+                <li><a href="#bio-2023">2023</a>: https://biolou.com</li>
+            </ul>
+        </li>
+        <li><a href="#english">English</a>
+            <ul>
+                <li><a href="#eng-2023">2023</a>: https://biolou.com</li>
+            </ul>
+        </li>
+       </ul>
+    </main>
+    <footer class="container">
+        <p>All papers belong to the SQA. This tool was developed to improve seraching for SQA digital papers.</p>
+    </footer>
+
+    <script>
+        function searchHighlighter() {
+            const inputValue = document.getElementById("input-search").value;
+            const listItems = document.querySelector("#papers").querySelectorAll("li");
+            if (!inputValue) {
+            listItems.forEach((li) => (li.querySelector("a").style.color = "#1167b1"));
+            return;
+            }
+            listItems.forEach((li) => {
+            const child = li.querySelector("a");
+            const txtValue = child.innerText;
+            child.style.color =txtValue.toUpperCase().indexOf(inputValue.toUpperCase()) > -1
+                ? "green"
+                : "#1167b1";
+            });
+        }
+    </script>
+</body>
+</html>
